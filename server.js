@@ -8,13 +8,6 @@ const fs = require("fs");
 dotenv.config();
 const app = express();
 
-// CORS configuration
-const corsOptions = {
-	origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-	credentials: true,
-	optionsSuccessStatus: 200
-};
-
 app.use(cors());
 
 // Connect to MongoDB
@@ -33,14 +26,14 @@ const createDirIfNotExists = (dir) => {
 };
 
 // Create upload directories
-createDirIfNotExists('uploads');
-createDirIfNotExists('uploads/documents');
-createDirIfNotExists('uploads/gallery');
-createDirIfNotExists('uploads/profiles');
-createDirIfNotExists('uploads/results');
+createDirIfNotExists("uploads");
+createDirIfNotExists("uploads/documents");
+createDirIfNotExists("uploads/gallery");
+createDirIfNotExists("uploads/profiles");
+createDirIfNotExists("uploads/results");
 
 // Serve static files
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Log all requests
 app.use((req, res, next) => {
@@ -56,8 +49,8 @@ app.use("/api/admin", require("./routes/admin"));
 app.use("/api/faculty", require("./routes/faculty"));
 
 // Health check route
-app.get('/health', (req, res) => {
-	res.status(200).json({ status: 'ok', message: 'Server is running' });
+app.get("/health", (req, res) => {
+	res.status(200).json({ status: "ok", message: "Server is running" });
 });
 
 // Error handling
