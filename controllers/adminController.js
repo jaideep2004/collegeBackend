@@ -8,7 +8,7 @@ const Department = require("../models/Department");
 const Category = require("../models/Category");
 const { sendEmail } = require("../utils/notify");
 const Notification = require("../models/Notification");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const mongoose = require("mongoose");
 const Payment = require("../models/Payment");
 
